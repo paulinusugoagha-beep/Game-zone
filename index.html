@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Game Zone Quiz</title>
+<style>
+body{background:#1a1a2e;color:white;text-align:center;padding:20px;font-family:sans-serif}
+h1{color:#ff2e63}
+button{background:#0f3460;color:white;padding:12px;margin:8px;width:90%;border:none;border-radius:8px;font-size:16px}
+button:active{background:#e94560}
+</style>
+</head>
+<body>
+<h1>🔥 Game Zone Quiz 🔥</h1>
+<div id="q">Loading...</div>
+<div id="a"></div>
+<p>Score: <span id="s">0</span></p>
+<script>
+let q=[
+{q:"Capital of Nigeria?",a:["Lagos","Abuja","Port Harcourt","Kano"],c:1},
+{q:"2 + 2 x 2 =?",a:["4","6","8","2"],c:1},
+{q:"Which is a programming language?",a:["HTML","CSS","JavaScript","All of them"],c:2},
+{q:"Red + Blue =?",a:["Green","Purple","Orange","Brown"],c:1}
+];
+let i=0,sc=0;
+function load(){
+if(i>=q.length){document.getElementById("q").innerHTML="🎉 Done! Score: "+sc+"/"+q.length;document.getElementById("a").innerHTML="";return}
+document.getElementById("q").innerText=q[i].q;
+let d=document.getElementById("a");d.innerHTML="";
+q[i].a.forEach((x,j)=>{let b=document.createElement("button");b.innerText=x;b.onclick=()=>{if(j==q[i].c)sc++;i++;document.getElementById("s").innerText=sc;load()};d.appendChild(b)})}
+load();
+</script>
+</body></html>
